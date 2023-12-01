@@ -1,8 +1,14 @@
 package controllers
 
-import javax.inject._
-import play.api.libs.json.Json
-import play.api.mvc._
+import javax.inject.*
+import play.api.libs.json.{Format, Json, OFormat}
+import play.api.mvc.*
+
+object Implicits {
+  implicit val indexResponseFormat: Format[IndexResponse] = Json.format[IndexResponse]
+}
+
+case class IndexResponse(message: String)
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -18,8 +24,10 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def index() = Action { implicit request: Request[AnyContent] =>
-    Ok(Json.obj("message" -> "Welcome to the sample app!"))
+  def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+    import Implicits._
+    Ok(Json.toJson(IndexResponse("Hello World!")))
   }
 
 }
+
