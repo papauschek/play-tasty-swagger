@@ -1,0 +1,27 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "title",
+    "version" : "1.0.0"
+  },
+  "paths" : {
+    "/assets/$file<.+>" : {
+      "get" : {
+        "description" : " Map static resources from the /public folder to the /assets URL path",
+        "deprecated" : false,
+        "parameters" : [ ],
+        "summary" : " Static resources",
+        "responses" : { }
+      }
+    },
+    "/" : {
+      "get" : {
+        "description" : " An example controller showing a sample home page",
+        "deprecated" : false,
+        "parameters" : [ ],
+        "summary" : " Home page",
+        "responses" : { }
+      }
+    }
+  }
+}

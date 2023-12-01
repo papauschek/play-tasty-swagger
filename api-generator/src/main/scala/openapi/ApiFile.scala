@@ -11,7 +11,7 @@ object Implicits {
   implicit val ComponentsFormat: Format[Components] = Json.format[Components]
   implicit val RequestBodyFormat: Format[RequestBody] = Json.format[RequestBody]
   implicit val OperationFormat: Format[Operation] = Json.format[Operation]
-  implicit val PathItemFormat: Format[PathItem] = Json.format[PathItem]
+  //implicit val PathItemFormat: Format[PathItem] = Json.format[PathItem]
   implicit val InfoFormat: Format[Info] = Json.format[Info]
   implicit val ApiFileFormat: Format[ApiFile] = Json.format[ApiFile]
 }
@@ -19,26 +19,19 @@ object Implicits {
 
 case class ApiFile(openapi: String,
                    info: Info,
-                   paths: Map[String, PathItem],
-                   components: Option[Components] = None)
+                   paths: Map[String, Map[String, Operation]],
+                   components: Option[Components])
 
 case class Info(title: String,
                 version: String)
 
-case class PathItem(get: Option[Operation] = None,
-                    put: Option[Operation] = None,
-                    post: Option[Operation] = None,
-                    delete: Option[Operation] = None,
-                    options: Option[Operation] = None,
-                    head: Option[Operation] = None,
-                    patch: Option[Operation] = None)
 
 case class Operation(summary: String,
                      description: String,
                      parameters: Seq[Parameter],
                      requestBody: Option[RequestBody],
                      responses: Map[String, Response],
-                     deprecated: Boolean = false)
+                     deprecated: Boolean)
 
 case class Parameter (name: String,
                       in: String,
