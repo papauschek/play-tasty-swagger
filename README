@@ -1,0 +1,5 @@
+Auto-generate Swagger 2.0 spec from Play Framework project via Scala 3 TASTY inspection.
+
+Not yet supported:
+* Swagger Tags
+* Swagger Schemas
