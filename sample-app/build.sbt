@@ -6,6 +6,7 @@ lazy val sampleapp = (project in file("."))
     version := "1.0-SNAPSHOT",
     scalaVersion := "3.3.1",
     libraryDependencies ++= Seq(
-      guice
+      guice,
+      compilerPlugin("com.journiapp" %% "api-generator" % "0.1.0-SNAPSHOT")
     )
   )
